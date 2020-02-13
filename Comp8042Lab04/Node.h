@@ -33,7 +33,14 @@ struct Node {
         // TODO Update the links as mandated by this rotation
         // TODO Do not forget to udpate the tree height for the updated subtrees
         // TODO Make sure to return the updated root after rotation
-        return this;
+		Node* y = right;
+		Node* T2 = y->left;
+
+		// Perform rotation  
+		y->left = this;
+		right = T2;
+
+        return y;
     }
 
     // Perform a single rotation at the current node and return the new root after rotation
@@ -41,7 +48,14 @@ struct Node {
         // TODO Update the links as mandated by this rotation
         // TODO Do not forget to udpate the tree height for the updated subtrees
         // TODO Make sure to return the updated root after rotation
-        return this;
+		Node* x = left;
+		Node* T2 = x->right;
+
+		// Perform rotation  
+		x->right = this;
+		left = T2;
+
+        return x;
     }
 
     // Perform a double rotation at the current node and return the new root after rotation
@@ -49,7 +63,9 @@ struct Node {
         // TODO Update the links as mandated by this rotation
         // TODO Do not forget to udpate the tree height for the updated subtrees
         // TODO Make sure to return the updated root after rotation
-        return this;
+		left = left->singleLeftRotation();
+		Node* x = singleRightRotation();
+        return x;
     }
 
     // Perform a double rotation at the current node and return the new root after rotation
@@ -57,7 +73,9 @@ struct Node {
         // TODO Update the links as mandated by this rotation
         // TODO Do not forget to udpate the tree height for the updated subtrees
         // TODO Make sure to return the updated root after rotation
-        return this;
+		right = right->singleRightRotation();
+		Node* y = singleLeftRotation();
+        return y;
     }
 };
 
